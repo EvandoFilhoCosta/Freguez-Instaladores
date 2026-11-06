@@ -60,6 +60,11 @@ O **Freguez Caixa** e o **Freguez Cadastro** usam sempre o mesmo número de vers
 ### iPhone (Expo Go) · 06/11/2026
 - **Novo:** o app do vendedor também no **iPhone**, pelo Expo Go. Mesmas telas e funções do Android. Abre pelo QR Code do [README](README.md#iphone).
 
+### 0.3.0 · 06/11/2026 (Android)
+- **Novo:** tela de perfil com **sair da conta**.
+- **Melhora:** botão de voltar no topo das telas e o voltar do Android funcionando em todas.
+- **Corrige:** o leitor de código de barras contava várias vezes o mesmo código parado na frente da câmera; agora conta uma vez (para contar de novo, tire da câmera por 2 segundos ou use o +).
+
 ### 0.2.0 · 28/10/2026 (Android)
 - **Novo:** aviso na tela quando há versão nova do app, com o botão para baixar.
 
