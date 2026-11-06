@@ -20,7 +20,7 @@ O Expo Go só abre o Freguez para quem está **entrando no Expo Go com uma conta
 3. Toque em **Abrir no Expo Go**.
 4. Aceite o uso da câmera e entre com o e-mail e a senha que a loja criou para você.
 
-Sem câmera à mão? No iPhone, abra este link: `exp://u.expo.dev/301707a6-2941-4f1f-883c-1dfce5edfa16?channel-name=producao&runtime-version=exposdk:54.0.0`
+Sem câmera à mão? No iPhone, abra este link: `exp://u.expo.dev/301707a6-2941-4f1f-883c-1dfce5edfa16?channel-name=producao&runtime-version=exposdk:58.0.0`
 
 Da próxima vez, o Freguez aparece na lista de **Recentes** do Expo Go.
 
@@ -37,7 +37,7 @@ As atualizações chegam sozinhas. Se não aparecer algo novo, feche o app (desl
 
 ## Por que pelo Expo Go
 
-Colocar na App Store exige conta de desenvolvedor da Apple e a revisão de cada versão. O Expo Go permite usar o app já, com as atualizações chegando na hora. O Expo Go da App Store roda apps feitos no **SDK 54** do Expo; por isso o Freguez para iPhone usa essa versão.
+Colocar na App Store exige conta de desenvolvedor da Apple e a revisão de cada versão. O Expo Go permite usar o app já, com as atualizações chegando na hora. O Freguez para iPhone acompanha a versão do Expo Go da App Store; se aparecer "projeto incompatível", atualize o Expo Go.
 
 ## Requisitos
 

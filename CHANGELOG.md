@@ -58,7 +58,7 @@ O **Freguez Caixa** e o **Freguez Cadastro** usam sempre o mesmo número de vers
 ## App do vendedor: Freguez Vendedor (Android e iPhone)
 
 ### iPhone (Expo Go) · 06/11/2026
-- **Novo:** o app do vendedor também no **iPhone**, pelo Expo Go (SDK 54). Mesmas telas e funções do Android. Abre pelo QR Code do [README](README.md#iphone).
+- **Novo:** o app do vendedor também no **iPhone**, pelo Expo Go. Mesmas telas e funções do Android. Abre pelo QR Code do [README](README.md#iphone).
 
 ### 0.2.0 · 28/10/2026 (Android)
 - **Novo:** aviso na tela quando há versão nova do app, com o botão para baixar.
