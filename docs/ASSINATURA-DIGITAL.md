@@ -33,7 +33,14 @@ O que isso exigiria:
 3. Pedir a entrada no SignPath Foundation (com autenticação em dois fatores no GitHub e no SignPath para quem publica).
 4. A assinatura sai em nome da **SignPath Foundation**, não do Freguez.
 
-Enquanto isso não for decidido, o caminho é o certificado OV.
+**Situação (06/11/2026):** decidido e feito. O código dos programas instalados está em [`codigo/`](../codigo) com licença MIT e o instalador é compilado pelo GitHub Actions ([instaladores.yml](../.github/workflows/instaladores.yml)). Falta:
+
+1. Ativar a autenticação em dois fatores no GitHub de quem publica.
+2. Pedir a entrada em [signpath.org/apply](https://signpath.org/apply.html), informando este repositório.
+3. Quando aprovado: criar o projeto no SignPath, colocar o token dele nos *Secrets* do GitHub e acrescentar ao workflow o passo de assinatura (`signpath/github-action-submit-signing-request`).
+4. Passar a publicar as versões a partir do que o GitHub Actions compilou e o SignPath assinou.
+
+O nome do programa continua **Freguez Caixa** / **Freguez Cadastro**; só o campo "Editor" da assinatura mostra *SignPath Foundation*.
 
 ## Como fica a publicação depois do certificado
 

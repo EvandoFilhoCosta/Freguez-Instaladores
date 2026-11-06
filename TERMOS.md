@@ -1,8 +1,7 @@
-# Termos de uso dos instaladores
+# Termos de uso
 
-1. O **Freguez** (caixa, totem, cadastro de produtos e app do vendedor) é um software **proprietário**. O código-fonte não faz parte deste repositório e não é licenciado aqui.
-2. Os instaladores são distribuídos **gratuitamente** para uso pelas lojas que têm conta ativa no Freguez e pelas pessoas autorizadas por elas.
-3. É permitido baixar, instalar e reinstalar os programas em quantos computadores e celulares a loja precisar.
-4. Não é permitido modificar, descompilar, revender ou redistribuir os instaladores alterados.
-5. Os programas só funcionam pareados com uma conta do Freguez; o uso dos dados segue os termos e a política de privacidade do serviço.
-6. Baixe sempre deste repositório ou do painel do Freguez, e confira o SHA-256 informado em cada Release.
+1. **Código dos programas instalados** (pasta `codigo/`: Freguez Caixa, totem e Freguez Cadastro): código aberto sob a licença [MIT](LICENSE). Pode ser lido, estudado, compilado e modificado nos termos dessa licença.
+2. **Serviço Freguez** (servidor, painel, site das lojas, banco de dados, app do vendedor e integrações): proprietário, **não** faz parte deste repositório nem da licença MIT. Os programas só funcionam ligados a uma conta ativa do Freguez, e o uso do serviço segue os termos e a política de privacidade dele.
+3. **Nome e marca**: "Freguez", o logotipo e o símbolo não são licenciados pela MIT. Uma versão modificada não pode ser distribuída com o nome ou a marca Freguez.
+4. **Instaladores oficiais**: são os publicados nas [Releases](https://github.com/EvandoFilhoCosta/Freguez-Instaladores/releases) deste repositório e no painel do Freguez. Confira sempre o SHA-256 informado em cada Release.
+5. As lojas podem instalar os programas em quantos computadores e celulares precisarem.

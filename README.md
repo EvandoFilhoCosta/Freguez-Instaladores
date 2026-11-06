@@ -30,7 +30,7 @@ O app do vendedor para iPhone abre pelo **Expo Go** (gratuito na App Store), sem
   <img src="img/qrcode-iphone.png" alt="QR Code para abrir o Freguez Vendedor no Expo Go" width="240">
 </p>
 
-1. Instale o [Expo Go](https://apps.apple.com/app/expo-go/id982107779) pela App Store.
+1. Instale o [Expo Go](https://apps.apple.com/app/expo-go/id982107779) pela App Store e **entre com a sua conta Expo**. A conta precisa ter sido convidada para a equipe do Freguez; sem isso aparece o erro 403 (veja [docs/IPHONE.md](docs/IPHONE.md)).
 2. Abra a **Câmera** do iPhone e aponte para o QR Code.
 3. Toque em **Abrir no Expo Go**. Na primeira vez, aceite o uso da câmera (é ela que lê o código de barras).
 4. Entre com o e-mail e a senha que a loja criou para você.
@@ -63,10 +63,16 @@ O resultado precisa ser igual ao da Release. Se for diferente, não instale.
 
 O Caixa e o Cadastro conferem sozinhos se há versão nova ao abrir e se atualizam. Cada atualização é verificada por uma assinatura própria do Freguez antes de instalar: um arquivo alterado no caminho é recusado. O app Android avisa na tela quando há versão nova.
 
+## Código-fonte
+
+A pasta [`codigo/`](codigo) tem o **código aberto (licença MIT)** dos programas que vão no computador da loja: Freguez Caixa, o totem e o Freguez Cadastro. Ficam de fora o servidor, o painel, o site e o banco de dados do Freguez, que continuam fechados. Os programas só funcionam ligados a uma conta do Freguez.
+
+Os instaladores são compilados aqui mesmo pelo GitHub Actions ([instaladores.yml](.github/workflows/instaladores.yml)), o que permite pedir a assinatura digital gratuita do SignPath Foundation. Compilar na sua máquina: veja [codigo/README.md](codigo/README.md).
+
 ## Suporte
 
 Fale com quem cuida do Freguez na sua loja ou com o suporte pelo painel (**Ajuda**).
 
 ---
 
-<sub>Freguez é um sistema proprietário. Estes instaladores são distribuídos gratuitamente para as lojas clientes; veja os [termos de uso](TERMOS.md). Este repositório guarda só os instaladores e a documentação, sem o código-fonte.</sub>
+<sub>O código em <code>codigo/</code> é aberto (licença <a href="LICENSE">MIT</a>). O serviço Freguez (servidor, painel, site e banco) é proprietário, e o nome e a marca Freguez não fazem parte da licença; veja os <a href="TERMOS.md">termos de uso</a>.</sub>

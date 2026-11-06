@@ -1,0 +1,195 @@
+@import "../../../packages/ui/src/styles/theme.css";
+
+:root {
+  --font-inter: "Inter";
+}
+
+html,
+body,
+#raiz {
+  height: 100%;
+}
+
+/* Cupom 80 mm: só o recibo sai na impressão */
+@media print {
+  @page {
+    size: 80mm auto;
+    margin: 0;
+  }
+  body * {
+    visibility: hidden;
+  }
+  .imprimir,
+  .imprimir * {
+    visibility: visible;
+  }
+  .imprimir {
+    position: absolute;
+    inset: 0 auto auto 0;
+    width: 80mm;
+  }
+}
+
+@keyframes bipado {
+  from {
+    background: var(--color-navy-50);
+  }
+  to {
+    background: transparent;
+  }
+}
+.bipado {
+  animation: bipado 400ms ease-out;
+}
+@media (prefers-reduced-motion: reduce) {
+  .bipado {
+    animation: none;
+  }
+}
+
+/* Tela do cliente */
+@keyframes tc-entra {
+  from {
+    opacity: 0;
+    transform: translateY(14px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+@keyframes tc-joinha {
+  0% {
+    opacity: 0;
+    transform: scale(0.3) rotate(-25deg);
+  }
+  55% {
+    opacity: 1;
+    transform: scale(1.15) rotate(8deg);
+  }
+  75% {
+    transform: scale(0.95) rotate(-4deg);
+  }
+  100% {
+    transform: scale(1) rotate(0);
+  }
+}
+@keyframes tc-anel {
+  from {
+    opacity: 0.55;
+    transform: scale(0.6);
+  }
+  to {
+    opacity: 0;
+    transform: scale(1.9);
+  }
+}
+.tc-entra {
+  animation: tc-entra 420ms cubic-bezier(0.2, 0.8, 0.2, 1) both;
+}
+.tc-joinha {
+  animation: tc-joinha 900ms cubic-bezier(0.2, 0.8, 0.2, 1) both;
+}
+.tc-anel {
+  animation: tc-anel 1.6s ease-out infinite;
+}
+@media (prefers-reduced-motion: reduce) {
+  .tc-entra,
+  .tc-joinha,
+  .tc-anel {
+    animation: none;
+  }
+}
+
+/* ---------- Totem (autoatendimento): área branca de informação + painel azul Freguez ---------- */
+.totem {
+  font-feature-settings: "tnum" 1;
+  background: #ffffff;
+}
+.totem .serifa {
+  font-family: "Fraunces", Georgia, serif;
+  font-optical-sizing: auto;
+  letter-spacing: -0.02em;
+}
+/* Azul da marca Freguez fixo (não usa a cor escolhida pela loja) */
+.totem-azul {
+  background:
+    radial-gradient(80% 50% at 100% 0%, rgb(53 93 146 / 0.55) 0%, transparent 60%),
+    radial-gradient(70% 45% at 0% 100%, rgb(232 150 46 / 0.14) 0%, transparent 70%),
+    linear-gradient(170deg, #1e3a5f 0%, #142a45 55%, #0d1d33 100%);
+  box-shadow: inset 1px 0 0 rgb(255 255 255 / 0.06);
+}
+.totem-botao-principal {
+  background: linear-gradient(180deg, #f3b45a 0%, #e8962e 100%);
+  color: #0f1b2d;
+  box-shadow:
+    inset 0 1px 0 rgb(255 255 255 / 0.45),
+    0 16px 40px -18px #e8962e;
+}
+@keyframes totem-surgir {
+  from {
+    opacity: 0;
+    transform: translateY(14px) scale(0.99);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+.totem-surgir {
+  animation: totem-surgir 0.45s cubic-bezier(0.2, 0.8, 0.2, 1) both;
+}
+@keyframes totem-check {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+.totem-check {
+  stroke-dasharray: 60;
+  stroke-dashoffset: 60;
+  animation: totem-check 0.6s 0.2s ease-out forwards;
+}
+@media (prefers-reduced-motion: reduce) {
+  .totem-surgir,
+  .totem-check {
+    animation: none;
+    stroke-dashoffset: 0;
+  }
+}
+
+/* ---------- Caixa: acabamento premium (fundo, total e botão de finalizar) ---------- */
+.caixa-fundo {
+  background:
+    radial-gradient(80% 60% at 100% 0%, color-mix(in srgb, var(--color-navy-100) 55%, transparent) 0%, transparent 60%),
+    linear-gradient(180deg, #f6f7f9 0%, #eef0f4 100%);
+}
+.caixa-topo {
+  background: linear-gradient(90deg, color-mix(in srgb, var(--color-navy-950) 92%, black) 0%, var(--color-navy-900) 100%);
+  box-shadow: inset 0 -1px 0 rgb(255 255 255 / 0.06);
+}
+.caixa-total {
+  background:
+    radial-gradient(70% 90% at 100% 0%, color-mix(in srgb, var(--color-amber-500) 22%, transparent) 0%, transparent 60%),
+    linear-gradient(160deg, var(--color-navy-900) 0%, color-mix(in srgb, var(--color-navy-950) 85%, black) 100%);
+  box-shadow:
+    inset 0 1px 0 rgb(255 255 255 / 0.08),
+    0 24px 48px -24px color-mix(in srgb, var(--color-navy-950) 80%, transparent);
+}
+.caixa-finalizar {
+  background: linear-gradient(180deg, color-mix(in srgb, var(--color-amber-400) 90%, white) 0%, var(--color-amber-500) 100%);
+  color: #14110b;
+  box-shadow:
+    inset 0 1px 0 rgb(255 255 255 / 0.5),
+    0 16px 32px -16px var(--color-amber-500);
+}
+.caixa-finalizar:disabled {
+  opacity: 0.45;
+  box-shadow: none;
+}
+.caixa-cartao {
+  background: rgb(255 255 255 / 0.92);
+  box-shadow:
+    0 0 0 1px rgb(16 31 51 / 0.06),
+    0 1px 2px rgb(16 31 51 / 0.04),
+    0 12px 32px -20px rgb(16 31 51 / 0.25);
+}

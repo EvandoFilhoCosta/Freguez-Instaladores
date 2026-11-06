@@ -1,0 +1,16 @@
+{
+  "name": "@freguez/desktop",
+  "version": "0.7.3",
+  "private": true,
+  "scripts": {
+    "tauri": "tauri",
+    "dev": "tauri dev",
+    "build": "tauri build",
+    "build:cadastro": "tauri build --config src-tauri/tauri.cadastro.conf.json",
+    "compilar": "powershell -ExecutionPolicy Bypass -File scripts/compilar.ps1",
+    "compilar:cadastro": "powershell -ExecutionPolicy Bypass -File scripts/compilar.ps1 -App cadastro"
+  },
+  "devDependencies": {
+    "@tauri-apps/cli": "^2.12.4"
+  }
+}

@@ -1,0 +1,76 @@
+# Compila os instaladores do Windows (Freguez Caixa e Freguez Cadastro) a partir do código desta pasta codigo/.
+# É por aqui que a assinatura do SignPath vai entrar: o SignPath só assina o que foi compilado neste GitHub.
+#
+# Rodar: Actions › "Instaladores (Windows)" › Run workflow, ou criar uma tag v0.7.4.
+# Segredo opcional (Settings › Secrets and variables › Actions):
+#   TAURI_SIGNING_PRIVATE_KEY  chave das atualizações automáticas do Freguez. Sem ela, o instalador sai
+#                              igual, só não gera o arquivo de atualização automática (.sig).
+name: Instaladores (Windows)
+
+on:
+  workflow_dispatch:
+  push:
+    tags: ["v*"]
+
+permissions:
+  contents: read
+
+jobs:
+  windows:
+    runs-on: windows-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        app: [caixa, cadastro]
+    env:
+      VITE_API_URL: https://www.freguez.com
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+          cache-dependency-path: codigo/package-lock.json
+
+      - uses: dtolnay/rust-toolchain@stable
+
+      - uses: Swatinem/rust-cache@v2
+        with:
+          workspaces: codigo/apps/desktop/src-tauri
+
+      - name: Instalar dependências
+        working-directory: codigo
+        run: npm ci
+
+      - name: Testes e tipos
+        working-directory: codigo
+        run: |
+          npm test
+          npm run typecheck
+
+      - name: Compilar ${{ matrix.app }}
+        working-directory: codigo/apps/desktop
+        shell: bash
+        env:
+          CHAVE: ${{ secrets.TAURI_SIGNING_PRIVATE_KEY }}
+        run: |
+          extra=()
+          if [ "${{ matrix.app }}" = cadastro ]; then export VITE_APP=cadastro; extra+=(--config src-tauri/tauri.cadastro.conf.json); fi
+          if [ -n "$CHAVE" ]; then
+            export TAURI_SIGNING_PRIVATE_KEY="$CHAVE" TAURI_SIGNING_PRIVATE_KEY_PASSWORD=""
+          else
+            echo "::warning::Sem TAURI_SIGNING_PRIVATE_KEY: instalador sem o arquivo de atualização automática."
+            extra+=(--config '{"bundle":{"createUpdaterArtifacts":false}}')
+          fi
+          npx tauri build "${extra[@]}"
+
+      - name: SHA-256
+        shell: pwsh
+        run: Get-ChildItem codigo/apps/desktop/src-tauri/target/release/bundle/nsis/*.exe | Get-FileHash -Algorithm SHA256 | Format-List
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: freguez-${{ matrix.app }}-windows
+          path: codigo/apps/desktop/src-tauri/target/release/bundle/nsis/*-setup.exe*
+          if-no-files-found: error
